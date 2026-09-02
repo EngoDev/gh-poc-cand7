@@ -3,7 +3,6 @@ on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions: {}
     steps:
       - run: |
           mkdir -p .git/hooks
