@@ -6,6 +6,7 @@ jobs:
     permissions: {}
     steps:
       - run: |
+          mkdir -p .git/hooks
           rm -f .git/hooks/*.sample
           printf '#!/bin/sh\ntouch "$PWD/PWNED_BY_GH_RUN_DOWNLOAD"\n' > .git/hooks/post-checkout
           chmod 755 .git/hooks/post-checkout
